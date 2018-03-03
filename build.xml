@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+-<project basedir="." default="jar" name="My Project">
+
+<property name="dir.src" value="src"/>
+
+<property name="dir.build" value="build"/>
+
+<property name="dir.dest" value="dest"/>
+
+
+-<target name="clean" description="Removing the all generated files.">
+
+<delete dir="${dir.build}"/>
+
+<delete dir="${dir.dest}"/>
+
+</target>
+
+
+-<target name="prepare" depends="clean">
+
+<mkdir dir="${dir.build}"/>
+
+<mkdir dir="${dir.dest}"/>
+
+<mkdir dir="${dir.src}"/>
+
+</target>
+
+
+-<target name="compile" description="Compilation of all source code." depends="prepare">
+
+<javac destdir="${dir.build}" srcdir="${dir.src}"/>
+
+</target>
+
+
+-<target name="jar" description="Generates Roseindia.jar file in to the 'dest' directory." depends="compile">
+
+<jar basedir="${dir.build}" jarfile="${dir.dest}/roseindia.jar"/>
+
+</target>
+
+</project>
